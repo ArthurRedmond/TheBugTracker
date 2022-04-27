@@ -115,7 +115,7 @@ namespace TheBugTracker.Services
 
             bool result = false;
 
-            Invite invite = _context.Invites.FirstOrDefault(i => i.CompanyToken == token);
+            Invite invite = await _context.Invites.FirstOrDefaultAsync(i => i.CompanyToken == token);
 
             if(invite != null)
             {
