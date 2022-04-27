@@ -10,7 +10,7 @@ namespace TheBugTracker.Services.Interfaces
 
         public Task AddNewInviteAsync(Invite invite);
 
-        public Task<bool> AnyInviteAsync(Guid toke, string email, int companyId);
+        public Task<bool> AnyInviteAsync(Guid token, string email, int companyId);
 
         public Task<Invite> GetInviteAsync(int inviteId, int companyId);
 
