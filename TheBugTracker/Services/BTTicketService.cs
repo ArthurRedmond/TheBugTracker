@@ -125,7 +125,7 @@ namespace TheBugTracker.Services
                                                         .Include(t => t.TicketStatus)
                                                         .Include(t => t.TicketType)
                                                         .Include(t => t.Project)
-                                                    .Where(t => t.TicketPropertyId == priorityId)
+                                                    .Where(t => t.TicketPriorityId == priorityId)
                                                     .ToListAsync();
                 return tickets;
             }

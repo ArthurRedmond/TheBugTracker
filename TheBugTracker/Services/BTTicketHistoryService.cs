@@ -80,7 +80,7 @@ namespace TheBugTracker.Services
                 }
 
                 // Check ticket Priority
-                if (oldTicket.TicketPropertyId != newTicket.TicketPropertyId)
+                if (oldTicket.TicketPriorityId != newTicket.TicketPriorityId)
                 {
                     TicketHistory history = new()
                     {

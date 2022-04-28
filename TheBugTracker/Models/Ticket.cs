@@ -35,7 +35,7 @@ namespace TheBugTracker.Models
         [DisplayName("Ticket Type")]
         public int TicketTypeId { get; set; }
         [DisplayName("Ticket Priority")]
-        public int TicketPropertyId { get; set; }
+        public int TicketPriorityId { get; set; }
         [DisplayName("Ticket Status")]
         public int TicketStatusId { get; set; }
         [DisplayName("Ticket Owner")]
