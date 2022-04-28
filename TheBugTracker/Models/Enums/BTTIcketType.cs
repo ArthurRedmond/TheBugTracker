@@ -1,6 +1,6 @@
 ﻿namespace TheBugTracker.Models.Enums
 {
-    public enum BTTIcketType
+    public enum BTTicketType
     {
         NewDevelopment,
         WorkTask,
