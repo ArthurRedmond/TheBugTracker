@@ -1,12 +1,53 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using TheBugTracker.Extensions;
+using TheBugTracker.Models;
+using TheBugTracker.Models.ViewModels;
+using TheBugTracker.Services.Interfaces;
 
 namespace TheBugTracker.Controllers
 {
     public class UserRolesController : Controller
     {
-        public IActionResult Index()
+        private readonly IBTRolesService _rolesService;
+        private readonly IBTCompanyInfoService _companyInfoService;
+
+        public UserRolesController(IBTRolesService rolesService, 
+                                   IBTCompanyInfoService companyInfoService)
         {
-            return View();
+            _rolesService = rolesService;
+            _companyInfoService = companyInfoService;
+        }
+
+        public async Task<IActionResult> ManageUserRoles()
+        {
+            // Add an instance of the ViewModel as a list (model)
+            List<ManageUserRolesViewModel> model = new();
+
+            // Get CompanyId
+            int companyId = User.Identity.GetCompanyId().Value;
+
+            // Get all company users
+            List<BTUser> users = await _companyInfoService.GetAllMembersAsync(companyId);
+
+            // Loop over teh user to populate the ViewModel
+            // - instantiate ViewModel
+            // - user _roleService
+            // - create multi-selects
+            foreach(BTUser user in users)
+            {
+                ManageUserRolesViewModel viewModel = new();
+                viewModel.BTUser = user;
+                IEnumerable<string> selected = await _rolesService.GetUserRolesAsync(user);
+                viewModel.Roles = new MultiSelectList(await _rolesService.GetRolesAsync(), "Name", "Name", selected);
+
+                model.Add(viewModel);
+            }
+
+            // Return the model to the view
+            return View(model);
         }
     }
 }
