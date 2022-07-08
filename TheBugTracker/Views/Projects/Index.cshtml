@@ -30,9 +30,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.ImageFileData)
             </th>
-            @* <th>
-            @Html.DisplayNameFor(model => model.ImageFileContentType)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Archived)
             </th>
@@ -75,10 +72,11 @@
                     @Html.DisplayFor(modelItem => item.Archived)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Company.Id)
+                    Company @Html.DisplayFor(modelItem => item.Company.Id)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ProjectPriority.Id)
+
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
