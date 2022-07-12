@@ -28,9 +28,11 @@ namespace TheBugTracker.Models
         public DateTimeOffset? Updated { get; set; }
         [DisplayName("Archived")]
         public bool Archived { get; set; }
-        [DisplayName("Project")]
+        [DisplayName("Archived By Project")]
+        public bool ArchivedByProject { get; set; }
 
         // Foreign Keys
+        [DisplayName("Project")]
         public int ProjectId { get; set; }
         [DisplayName("Ticket Type")]
         public int TicketTypeId { get; set; }
