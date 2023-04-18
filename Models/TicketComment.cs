@@ -16,7 +16,7 @@ namespace TheBugTracker.Models
         public int TicketId { get; set; }
 
         [Display(Name = "Team Member")]
-        public BTUser UserId { get; set; }
+        public string UserId { get; set; }
 
         // Navigation properties
         public virtual Ticket Ticket { get; set; }
